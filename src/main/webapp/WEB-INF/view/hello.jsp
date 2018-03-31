@@ -2,11 +2,14 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
+<head>
+<link href="<c:url value="/resources/css/css.css" />" rel="stylesheet">
+</head>
 <body>
-	<h1>Title : ${title}</h1>
-	<h1>Message : ${message}</h1>
+	<h1 class="deepShadow">${title}</h1>
+	<h1 class="deepShadow"><a href="/login"> Login </a></h1>
 	<br/>
-    <a href="/login"> Login </a>
+
 
 	<sec:authorize access="hasRole('ROLE_USER')">
 		<!-- For login user -->

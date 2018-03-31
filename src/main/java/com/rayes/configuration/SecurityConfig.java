@@ -1,5 +1,6 @@
 package com.rayes.configuration;
 
+import com.rayes.model.service.SimpleUrlAuthenticationHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -41,6 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.loginPage("/login").failureUrl("/login?error")
 				.usernameParameter("username")
 				.passwordParameter("password")
+				.successHandler(authenticationHandler())
 				.and().logout().logoutSuccessUrl("/login?logout")
 				.and().csrf()
 				.and().exceptionHandling().accessDeniedPage("/403");
@@ -50,6 +52,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public PasswordEncoder passwordEncoder(){
 		PasswordEncoder encoder = new BCryptPasswordEncoder();
 		return encoder;
+	}
+
+	@Bean
+	public SimpleUrlAuthenticationHandler authenticationHandler() {
+		return  new SimpleUrlAuthenticationHandler();
 	}
 
 }

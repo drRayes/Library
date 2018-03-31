@@ -1,5 +1,6 @@
 package com.rayes.configuration;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rayes.model.entity.Book;
 import com.rayes.model.entity.Person;
 import com.rayes.model.entity.Role;
@@ -10,6 +11,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.http.MediaType;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
@@ -21,6 +25,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 import javax.sql.DataSource;
+import java.util.Collections;
+import java.util.List;
 import java.util.Properties;
 
 /**
@@ -95,6 +101,13 @@ public class AppConfig implements WebMvcConfigurer {
 				.addResourceLocations("/resources/");
 	}
 
+	@Override
+	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+		MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
+		converter.setObjectMapper(new ObjectMapper());
+		converter.setSupportedMediaTypes(Collections.singletonList(MediaType.APPLICATION_JSON));
+		converters.add(converter);
+	}
 
 	
 }

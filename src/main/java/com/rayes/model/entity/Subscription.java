@@ -1,6 +1,7 @@
 package com.rayes.model.entity;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "subscription")
@@ -15,6 +16,10 @@ public class Subscription {
     @JoinColumn(name = "person_id")
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Person person;
+    @Column(name = "date_of_issue")
+    private Date issueDate;
+    @Column(name = "return_date")
+    private Date returnDate;
 
     public Long getSubscriptionId() {
         return subscriptionId;
@@ -22,6 +27,22 @@ public class Subscription {
 
     public void setSubscriptionId(Long subscriptionId) {
         this.subscriptionId = subscriptionId;
+    }
+
+    public Date getIssueDate() {
+        return issueDate;
+    }
+
+    public void setIssueDate(Date issueDate) {
+        this.issueDate = issueDate;
+    }
+
+    public Date getReturnDate() {
+        return returnDate;
+    }
+
+    public void setReturnDate(Date returnDate) {
+        this.returnDate = returnDate;
     }
 
     public Book getBook() {

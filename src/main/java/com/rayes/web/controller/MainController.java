@@ -67,6 +67,13 @@ public class MainController {
 
 	}
 
+	//success
+	@RequestMapping(value = "/success", method = RequestMethod.GET)
+	public ModelAndView success() {
+		ModelAndView modelAndView = new ModelAndView("success");
+		return modelAndView;
+	}
+
 	// customize the error message
 	private String getErrorMessage(HttpServletRequest request, String key) {
 
