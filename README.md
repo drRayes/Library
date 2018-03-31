@@ -1,5 +1,5 @@
 # Library
-My training project. Using Spring-MVC, Spring-Security, Hibernate, JSP, H2 database.
+My training project. Using Spring-MVC, Spring-Security, Hibernate, JSP, H2 database, CSS, JQuery.
 
 Users:
 Login: admin Password: admin Authority admin Status: active
