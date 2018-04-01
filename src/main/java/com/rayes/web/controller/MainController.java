@@ -67,10 +67,10 @@ public class MainController {
 
 	}
 
-	//success
-	@RequestMapping(value = "/success", method = RequestMethod.GET)
+	//customer
+	@RequestMapping(value = "/customer", method = RequestMethod.GET)
 	public ModelAndView success() {
-		ModelAndView modelAndView = new ModelAndView("success");
+		ModelAndView modelAndView = new ModelAndView("customer");
 		return modelAndView;
 	}
 

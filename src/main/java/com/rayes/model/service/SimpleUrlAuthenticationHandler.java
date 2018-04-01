@@ -48,13 +48,13 @@ public class SimpleUrlAuthenticationHandler
     }
 
     protected String determineTargetUrl(Authentication authentication) {
-        boolean isUser = false;
+        boolean isCustomer = false;
         boolean isAdmin = false;
         Collection<? extends GrantedAuthority> authorities
                 = authentication.getAuthorities();
         for (GrantedAuthority grantedAuthority : authorities) {
             if (grantedAuthority.getAuthority().equals("customer")) {
-                isUser = true;
+                isCustomer = true;
                 break;
             } else if (grantedAuthority.getAuthority().equals("admin")) {
                 isAdmin = true;
@@ -62,8 +62,8 @@ public class SimpleUrlAuthenticationHandler
             }
         }
 
-        if (isUser) {
-            return "/success";
+        if (isCustomer) {
+            return "/customer";
         } else if (isAdmin) {
             return "/admin";
         } else {
