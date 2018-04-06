@@ -1,5 +1,7 @@
 package com.rayes.configuration;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rayes.model.entity.Book;
 import com.rayes.model.entity.Person;
@@ -25,6 +27,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 import javax.sql.DataSource;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
@@ -104,8 +107,12 @@ public class AppConfig implements WebMvcConfigurer {
 	@Override
 	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
 		MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
-		converter.setObjectMapper(new ObjectMapper());
-		converter.setSupportedMediaTypes(Collections.singletonList(MediaType.APPLICATION_JSON));
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.enable(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT);
+		converter.setObjectMapper(objectMapper);
+		List<MediaType> list = new ArrayList<>();
+		list.add(MediaType.APPLICATION_JSON);
+		converter.setSupportedMediaTypes(list);
 		converters.add(converter);
 	}
 

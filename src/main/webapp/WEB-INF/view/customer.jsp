@@ -8,8 +8,15 @@
 <script src="/resources/js/app.js" type="text/javascript"></script>
 </head>
 <body>
-	<h1 class="deepShadow">Hello ${pageContext.request.userPrincipal.name}</h1>
+    <h1 class="deepShadow">Hello ${pageContext.request.userPrincipal.name}</h1>
 	<br/>
+	<button class="button" id="book"><span>Subscriptions</span></button><br/>
+    <button class="button" id="hide"><span>Hide</span></button><br/>
+    <table id="bookTable">
+    </table>
+    <button class="button" id="searchBook"><span>Search</span></button><textarea id="textArea" placeholder="Enter book name or author to find book"></textarea><br/>
+    <table id="foundBooks">
+    </table>
 
 	<sec:authorize access="hasAuthority('customer')">
 		<c:url value="/logout" var="logoutUrl" />
@@ -25,18 +32,10 @@
 
 		<c:if test="${pageContext.request.userPrincipal.name != null}">
 			<h1 class="deepShadow">
-             <div id="book">
-                 <button class="button" id="book" style="vertical-align:middle"><span>Subscriptions</span></button>
-                 | <a href="javascript:formSubmit()"> Logout</a>
-                               </div>
+                <a href="javascript:formSubmit()"> Logout</a>
 			</h1>
 		</c:if>
 	</sec:authorize>
-	<button class="button" id="hide" style="vertical-align:middle"><span>Hide</span></button>
-    <table id="bookTable">
-    </table>
-    <textarea id="textArea" placeholder="Enter book name or author to find book"></textarea><button class="button" id="searchBook" style="vertical-align:middle"><span>Search</span></button>
-    <table id="foundBooks">
-    </table>
+
 </body>
 </html>

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -38,6 +39,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 		http.authorizeRequests()
 				.antMatchers("/admin/**").hasAuthority("admin")
+				.antMatchers(HttpMethod.POST,"/book/**").hasAnyAuthority("employee", "admin")
+				.antMatchers("/employee/**").hasAnyAuthority("employee", "admin")
 				.and().formLogin()
 				.loginPage("/login").failureUrl("/login?error")
 				.usernameParameter("username")
@@ -45,7 +48,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.successHandler(authenticationHandler())
 				.and().logout().logoutSuccessUrl("/login?logout")
 				.and().csrf()
-				.and().exceptionHandling().accessDeniedPage("/403");
+				.and()
+				.exceptionHandling().accessDeniedPage("/403");
 	}
 
 	@Bean

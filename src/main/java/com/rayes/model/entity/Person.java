@@ -1,8 +1,11 @@
 package com.rayes.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.Date;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
 @Table(name = "person")
 public class Person {
@@ -25,6 +28,8 @@ public class Person {
     @Column(name = "status")
     private Boolean status;
 
+    public Person() {
+    }
 
     public Long getPersonId() {
         return personId;

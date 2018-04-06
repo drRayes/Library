@@ -1,4 +1,5 @@
 $(document).ready(function(){                            // по завершению загрузки страницы
+    $("#hide").hide();
     $("#book").bind("click", function list() {
         var base_url = 'http://localhost:8080/book/list/';
         console.log($("h1").html().substring(6));
@@ -7,12 +8,15 @@ $(document).ready(function(){                            // по заверше�
             url: base_url + $("h1").html().substring(6),
             success: function(response) {
                 var json_obj = response;//parse JSON
-                $('#bookTable').html('');
+                $("#bookTable").html("");
+                $("#hide").show();
                 $("#hide").bind("click", function hideBookTable() {
-                    if ( $( "#bookTable" ).is( ":hidden" ) ) {
-                        $( "#bookTable" ).show( "slow" );
+                    if ($("#bookTable").is(":hidden")) {
+                        $("#bookTable").show("slow");
+                        $("#hide").html("Hide");
                       } else {
                         $( "#bookTable" ).slideUp();
+                        $("#hide").html("Slide up");
                       }
                                     });
                 for(var i = 0; i < json_obj.length; i++) {

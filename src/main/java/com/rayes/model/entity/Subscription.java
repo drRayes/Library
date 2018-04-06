@@ -1,8 +1,11 @@
 package com.rayes.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.Date;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
 @Table(name = "subscription")
 public class Subscription {
@@ -20,6 +23,8 @@ public class Subscription {
     private Date issueDate;
     @Column(name = "return_date")
     private Date returnDate;
+
+    public Subscription() {}
 
     public Long getSubscriptionId() {
         return subscriptionId;

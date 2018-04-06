@@ -1,7 +1,10 @@
 package com.rayes.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
 @Table(name = "book")
 public class Book {
@@ -15,6 +18,8 @@ public class Book {
     private String author;
     @Column(name = "description")
     private String description;
+
+    public Book() {}
 
     public Long getBookId() {
         return bookId;
