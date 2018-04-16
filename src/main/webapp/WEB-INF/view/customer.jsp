@@ -5,13 +5,14 @@
 <head>
 <link href="<c:url value="/resources/css/css.css" />" rel="stylesheet">
 <script src="/resources/js/jquery.js" type="text/javascript"></script>
-<script src="/resources/js/app.js" type="text/javascript"></script>
+<script src="/resources/js/customer.js" type="text/javascript"></script>
 </head>
 <body>
     <h1 class="deepShadow">Hello ${pageContext.request.userPrincipal.name}</h1>
 	<br/>
 	<button class="button" id="book"><span>Subscriptions</span></button><br/>
     <button class="button" id="hide"><span>Hide</span></button><br/>
+    <button class="button" id="allBooks"><span>All books</span></button>
     <table id="bookTable">
     </table>
     <button class="button" id="searchBook"><span>Search</span></button><textarea id="textArea" placeholder="Enter book name or author to find book"></textarea><br/>

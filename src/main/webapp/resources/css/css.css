@@ -315,3 +315,11 @@ h1.deepShadow {
    background-image: -ms-linear-gradient(top, #6aa436 0%, #8dc059 100%);
    color: #fff;
    }
+td>textarea {
+    float: right;
+	width: 200px;
+	height: 40px;
+	border: 3px solid #cccccc;
+	padding: 5px;
+	font-family: Tahoma, sans-serif;
+}

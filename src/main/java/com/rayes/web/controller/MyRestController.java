@@ -56,5 +56,10 @@ public class MyRestController {
         return bookService.saveSubscription(subscription);
     }
 
+    @RequestMapping(value = "/allBooks", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody List<Book> getAllBooks() {
+        return bookService.getAllBooks();
+    }
+
 
 }

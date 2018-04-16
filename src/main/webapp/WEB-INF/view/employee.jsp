@@ -15,7 +15,7 @@
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
 
 
-	<button class="button" id="addCustomer"><span>Add customer</span></button><br/>
+	<button class="button" id="addCustomer"><span>Add customer</span></button>
 	<form id="addCustomerForm" class="form-container">
 	    <input id="firstName" class="form-field" type="text" value="firstName">First name</input><br/>
 	    <input id="middleName" class="form-field" type="text" value="middleName">Middle name</input><br/>
@@ -26,21 +26,22 @@
 	    <input class="submit-button"  type="button" id="submitCustomer" value="submit"/>
 	</form><br/>
 
-	<button class="button" id="addBook"><span>Add book</span></button><br/>
+	<button class="button" id="addBook"><span>Add book</span></button>
 	<form id="addBookForm" class="form-container">
 	    <input id="name" class="form-field" type="text" value="name">Name</input><br/>
 	    <input id="author" class="form-field" type="text" value="author">Author</input><br/>
 	    <input id="description" class="form-field" type="text" value="description">Description</input><br/>
 	    <input class="submit-button" type="button" id="submitBook" value="submit"/>
 	</form><br/>
-	<button class="button" id="addSubscription"><span>Add subscription</span></button><br/>
+	<button class="button" id="addSubscription"><span>Add subscription</span></button>
 	<form id="addSubscriptionForm" class="form-container">
 	    <input id="book" class="form-field" type="text" value="book">Book</input><br/>
 	    <input id="person" class="form-field" type="text" value="person">Person</input><br/>
 	    <input class="submit-button" type="button" id="submitSubscription" value="submit"/>
 	</form><br/>
-	<button class="button" id="book"><span>Subscriptions</span></button><textarea id="textAreaSubscription" placeholder="Enter login of customer to get him subscriptions"></textarea><br/>
+	<button class="button" id="subscription"><span>Subscriptions</span></button><textarea id="textAreaSubscription" placeholder="Enter login of customer to get him subscriptions"></textarea><br/>
     <button class="button" id="searchBook"><span>Search</span></button><textarea id="textArea" placeholder="Enter book name or author to find book"></textarea><br/>
+    <button class="button" id="allBooks"><span>All books</span></button>
     <button class="button" id="hide"><span>Hide</span></button><br/>
     <table id="bookTable">
     </table>

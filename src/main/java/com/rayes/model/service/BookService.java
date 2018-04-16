@@ -126,6 +126,16 @@ public class BookService {
         }
         return subscription;
     }
+
+    public List<Book> getAllBooks() {
+        List<Book> list = new ArrayList<>();
+        try(Session session = sessionFactory.openSession()) {
+            list = session.createQuery("FROM Book").getResultList();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return list;
+    }
 }
 
 

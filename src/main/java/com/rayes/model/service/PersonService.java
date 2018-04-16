@@ -9,6 +9,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Class for saving, deleting or editing persons entity in database.
  *
@@ -56,5 +58,40 @@ public class PersonService {
             throw new RuntimeException(e);
         }
         return person;
+    }
+
+    @Transactional
+    public String updatePerson(Person person) {
+        Person personId;
+        person.setPassword(passwordEncoder.encode(person.getPassword()));
+        try(Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+            session.update(person);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return "Person " + person.getLogin() + " was updated!";
+    }
+
+    public String adminCreatePerson(Person person, Role role) {
+        person.setPassword(passwordEncoder.encode(person.getPassword()));
+        try(Session session = sessionFactory.openSession()) {
+            session.save(person);
+            session.save(role);
+            return "Person with login " + person.getLogin() + " and role " +
+                    role.getRole() + " was created!";
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public List<Person> getListOfPersons() {
+        List<Person> list;
+        try(Session session = sessionFactory.openSession()) {
+            list = session.createQuery("FROM Person").getResultList();
+        }
+        return list;
     }
 }
