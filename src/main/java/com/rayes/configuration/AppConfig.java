@@ -61,7 +61,7 @@ public class AppConfig implements WebMvcConfigurer {
 		System.out.println("Hibernate initiated");
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.h2.Driver");
-		dataSource.setUrl("jdbc:h2:~/test");
+		dataSource.setUrl("jdbc:h2:./data/db");
 		dataSource.setUsername("root");
 		dataSource.setPassword("root");
 		System.out.println("connection es");

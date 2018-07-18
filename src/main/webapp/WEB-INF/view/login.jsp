@@ -8,6 +8,8 @@
 <body onload='document.loginForm.username.focus();'>
 
 	<h1 class="deepShadow">Library</h1>
+	<h2 class="deepShadow">default login admin<br/>
+                                   password admin</h2>
 
 	<div id="login-box">
 
